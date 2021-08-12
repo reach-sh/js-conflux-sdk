@@ -502,6 +502,14 @@ class Conflux {
     return format.block.$or(null)(result);
   }
 
+  async getBlockByBlockNumber(blockNumber, detail = false) {
+    const result = await this.provider.call('cfx_getBlockByBlockNumber',
+      format.bigUIntHex(blockNumber),
+      format.boolean(detail),
+    );
+    return format.block.$or(null)(result);
+  }
+
   /**
    * Returns hashes of blocks located in some epoch.
    *
