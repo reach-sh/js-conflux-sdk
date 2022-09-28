@@ -19,6 +19,8 @@ const cfxFormat = new Proxy(() => undefined, {
 cfxFormat.getLogs = format({
   fromEpoch: format.epochNumber,
   toEpoch: format.epochNumber,
+  fromBlock: format.bigUIntHex,
+  toBlock: format.bigUIntHex,
   blockHashes: format([format.blockHash]).$or(null),
   address: format.address.$or([format.address]).$or(null),
   topics: format([format.hex64.$or([format.hex64]).$or(null)]),
@@ -33,6 +35,8 @@ cfxFormat.getLogsAdvance = function (networkId, toHexAddress = false, useVerbose
   return format({
     fromEpoch: format.epochNumber,
     toEpoch: format.epochNumber,
+    fromBlock: format.bigUIntHex,
+    toBlock: format.bigUIntHex,
     blockHashes: format([format.blockHash]).$or(null),
     address: format([formatAddress]).$or(formatAddress).$or(null),
     topics: format([format.hex64.$or([format.hex64]).$or(null)]),
